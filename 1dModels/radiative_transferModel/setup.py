@@ -1,3 +1,10 @@
+import climt
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+import metpy.calc as calc
+from metpy.units import units
+
 def setup():
   surface_temp = 300.
   radiation_lw = climt.GrayLongwaveRadiation()
