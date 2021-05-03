@@ -1,1 +1,0 @@
-This directory contains 2 models: One for radiative equilibrium and one for radiative transfer. The directories containing the source code are labelled as such.
