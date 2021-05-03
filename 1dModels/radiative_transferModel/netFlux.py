@@ -6,9 +6,10 @@ import metpy.calc as calc
 from metpy.units import units
 from setup import *
 
-airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear = setup()
+state, airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear = setup()
 
 def netFlux():
+  radiation_lw = climt.GrayLongwaveRadiation()
   optical_depth = climt.Frierson06LongwaveOpticalDepth(
         longwave_optical_depth_at_equator=max_tau,
         linear_optical_depth_parameter=linear)

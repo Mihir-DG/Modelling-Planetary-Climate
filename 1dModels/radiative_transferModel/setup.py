@@ -19,4 +19,4 @@ def setup():
   opticalDepth_verticalCoord = list(np.array(state['longwave_optical_depth_on_interface_levels']).flatten())
   airPressure_verticalCoord = np.array(state['air_pressure_on_interface_levels']).flatten()
   airPressure_verticalCoord = [x/1000 for x in airPressure_verticalCoord]
-  return airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear
+  return state, airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear

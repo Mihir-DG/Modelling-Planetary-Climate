@@ -6,7 +6,7 @@ import metpy.calc as calc
 from metpy.units import units
 from setup import *
 
-airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear = setup()
+state, airPressure_verticalCoord, opticalDepth_verticalCoord, max_tau, linear = setup()
 
 def tauPressure_var_linear():
   depth_list = []
