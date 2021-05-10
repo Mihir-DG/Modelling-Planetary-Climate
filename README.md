@@ -11,9 +11,10 @@ This project aims to explore methods of modelling large-scale Earth systems and 
     * The effect of doubling aggregate atmospheric thickness on the system's outgoing longwave radiation. 
 
 
-3. **./1dmodels/radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The system monitors the net energy level in the atmospheric column as a marker for equilibrium to terminate the program. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
+3. **./1dmodels/radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
     * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence. 
     * Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary. 
+    * The system monitors the net energy level in the atmospheric column as stopping criteria.
     * The effect of changing aggregate atmospheric thickness on the length of time required for the system to reach equilibrium. 
 
 ## Modules Used ##
