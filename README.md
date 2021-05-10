@@ -18,9 +18,9 @@ This project aims to explore methods of modelling large-scale Earth systems and 
 
 ## Modules Used ##
 This section lists the Python3 libraries used directly for the development of the models in this repository- not the dependencies of the libraries themselves. 
-* **CLiMT**: Provides components to set up a model state and create output tendencies and diagnostics.
-* **Numpy**: Used for the processing of multidimensional arrays.
-* **Matplotlib**: Used to present results graphically.
-* **Datetime**: Handles time incrementation (timedelta) and monitors program runtime and the equilibrium time. 
-* **Metpy**: Provides important observed meteorological constants used to set up a relatively realistic model.
-* **Sympl**: Used for the Adams-Bashforth numerical integration technique used to move the model through time. It is also a primary dependency for CLiMT functioning.
+* **CLiMT 0.16.23**: Provides components to set up a model state and create output tendencies and diagnostics.
+* **numpy 1.19.5**: Used for the processing of multidimensional arrays.
+* **Matplotlib 3.3.4**: Used to present results graphically.
+* **Datetime 3.9.4**: Handles time incrementation (timedelta) and monitors program runtime and the equilibrium time. 
+* **Metpy 1.0.1**: Provides important observed meteorological constants used to set up a relatively realistic model.
+* **Sympl 0.4.0**: Used for the Adams-Bashforth numerical integration technique used to move the model through time. It is also a primary dependency for CLiMT functioning.
