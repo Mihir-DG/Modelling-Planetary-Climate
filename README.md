@@ -24,3 +24,4 @@ This section lists the Python3 libraries used directly for the development of th
 * **datetime 3.9.4**: Handles time incrementation (timedelta) and monitors program runtime and the equilibrium time. 
 * **metpy 1.0.1**: Provides important observed meteorological constants used to set up a relatively realistic model.
 * **sympl 0.4.0**: Used for the Adams-Bashforth numerical integration technique used to move the model through time. It is also a primary dependency for CLiMT functioning.
+* **csv 3.9.5**: Used to pass output data to dedicated programs for graphing.
