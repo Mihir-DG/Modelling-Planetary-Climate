@@ -16,7 +16,7 @@ olr = [float(i) for i in olr]
 plt.plot(olr)
 plt.xlabel("Weeks")
 plt.ylabel("Outgoing Longwave Radiation (W m^-2)")
-plt.savefig("graphs/weeklyOLR.png")
+plt.savefig("../../../graphs_modelling/1dradiative-eq/weeklyOLR.png")
 
 # Plotting bdry_tempDiff
 fig = plt.figure()
@@ -24,14 +24,15 @@ bdry_tempDiff = [float(i) for i in bdry_tempDiff]
 plt.plot(bdry_tempDiff)
 plt.xlabel("Weeks")
 plt.ylabel("Surface-Air Temperature Gradient (K)")
-plt.savefig("graphs/weeklybdry_tempDiff.png")
+plt.savefig("../../../graphs_modelling/1dradiative-eq/weeklybdry_tempDiff.png")
 
 # Plotting surfT
 fig = plt.figure()
 surfT = [float(i) for i in surfT]
 plt.plot(surfT)
 plt.xlabel("Weeks")
-plt.savefig("graphs/weekly_surfT.png")
+plt.ylabel("Surface Temperature (K)")
+plt.savefig("../../../graphs_modelling/1dradiative-eq/weekly_surfT.png")
 plt.ylabel("Surface Temperature (K)")
 
 #Plotting netEn
@@ -40,4 +41,4 @@ netEn = [float(i) for i in netEn]
 plt.plot(netEn)
 plt.xlabel("Weeks")
 plt.ylabel("Net Energy Level in Atmospheric Column (W m^-2)")
-plt.savefig("graphs/weekly_netEn.png")
+plt.savefig("../../../graphs_modelling/1dradiative-eq/weekly_netEn.png")

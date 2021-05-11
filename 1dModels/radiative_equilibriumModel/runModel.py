@@ -35,7 +35,7 @@ def runningModel():
 	#Creates list for assorted 0d output vars.
 	netEn = [(net_energy_level_in_column(state,diff_acceptable))[0]]
 	bdry_tempDiff = [surf_airBdry_tempDiff(state)]
-	olrs = [(np.array(state['upwelling_longwave_flux_in_air']).flatten())[radHt]]
+	olrs = [(np.array(state['upwelling_longwave_flux_in_air']).flatten())[-1]]
 	surfT = [(np.array(state['surface_temperature']).flatten())[0]]
 	counter = 0
 	#Loop to increment time
@@ -48,7 +48,7 @@ def runningModel():
 		if counter % 42 == 0:
 			netEn.append((net_energy_level_in_column(state,diff_acceptable))[0])
 			bdry_tempDiff.append(surf_airBdry_tempDiff(state))
-			olrs.append((np.array(state['upwelling_longwave_flux_in_air']).flatten())[radHt])
+			olrs.append((np.array(state['upwelling_longwave_flux_in_air']).flatten())[-1])
 			surfT.append((np.array(state['surface_temperature']).flatten())[0])
 		# Checks breakout condition and increments time + counter.
 		counter += 1
@@ -102,3 +102,5 @@ Required outs from runningModel():
 	10) opticalDepth (p) - eq. --> MAYBE!!
 	11) equilibrium time
 """
+
+#NOTE: ONLY USE radHt after reaching equilbrium. 
