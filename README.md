@@ -14,7 +14,7 @@ This project aims to explore methods of modelling large-scale Earth systems and 
 3. **./1dmodels/radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
     * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence. 
     * Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary. 
-    * The system monitors the net energy level in the atmospheric column as stopping criteria.
+    * Stopping criteria via the minimization of a net energy level in the atmospheric column.
     * The effect of changing aggregate atmospheric thickness on the length of time required for the system to reach equilibrium. 
 
 ## Modules Used ##
