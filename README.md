@@ -4,14 +4,14 @@ This project aims to explore methods of modelling large-scale Earth systems and 
 ## Directory structure
 1. **./zeroDims/**: Contains the code required to run a simple zero-dimensional model, primarily seeking to identify the surface's equilibrium radiating temperature for a given albedo level.
 
-2. **./1dmodels/radiative_transferModel/**: Adds a vertical dimension to the 0d model i.e. considers atmospheric influence over a point-like projection of the surface. This model aims to evaluate:
+2. **./radiative_transferModel/**: Adds a vertical dimension to the 0d model i.e. considers atmospheric influence over a point-like projection of the surface. This model aims to evaluate:
     * The relationships between the atmosphere's optical thickness, absorptivity, and the planet's outgoing longwave radiative flux intensity,
     * The vertical profiles of longwave optical depth, heating rates, and flux divergence,
     * Their converse isothermal profiles. 
     * The effect of doubling aggregate atmospheric thickness on the system's outgoing longwave radiation. 
 
 
-3. **./1dmodels/radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
+3. **./radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
     * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence. 
     * Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary. 
     * Stopping criteria via the minimization of a net energy level in the atmospheric column.
