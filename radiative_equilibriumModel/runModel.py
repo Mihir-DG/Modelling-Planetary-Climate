@@ -39,6 +39,7 @@ def runningModel(maxTau):
 	olrs = [(np.array(state['upwelling_longwave_flux_in_air']).flatten())[-1]]
 	surfT = [(np.array(state['surface_temperature']).flatten())[0]]
 	counter = 0
+	errorMargin = 0.5
 	#Loop to increment time
 	while stop == False:
 		#Updating state
@@ -54,7 +55,7 @@ def runningModel(maxTau):
 		# Checks breakout condition and increments time + counter.
 		counter += 1
 		time = time + timestep
-		if abs(net_energy_level_in_column(state,diff_acceptable)[0]) < 0.5:
+		if abs(net_energy_level_in_column(state,diff_acceptable)[0]) < errorMargin:
 			stop = True
 	#Calculating output quantities.
 	timeTaken = time - datetime.datetime(2020,1,1,0,0,0)
