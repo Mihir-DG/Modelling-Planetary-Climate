@@ -15,7 +15,7 @@ This project aims to explore methods of modelling large-scale Earth systems and 
     * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence. 
     * Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary. 
     * Stopping criteria via the minimization of a net energy level in the atmospheric column.
-    * The effect of changing aggregate atmospheric thickness on the length of time required for the system to reach equilibrium. 
+    * The effect of changing aggregate atmospheric thickness on the timespan required for the system to reach equilibrium. 
 
 ## Modules Used ##
 This section lists the Python3 libraries used directly for the development of the models in this repository- not the dependencies of the libraries themselves. 
