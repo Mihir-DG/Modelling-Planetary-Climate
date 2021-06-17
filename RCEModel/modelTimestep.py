@@ -1,7 +1,24 @@
-#monitor = PlotFunctionMonitor(plot_function)
-def runningModel():
-  maxTau = 8.
-  albedo = 0.3
+from sympl import (
+    AdamsBashforth, PlotFunctionMonitor)
+from climt import (
+    Frierson06LongwaveOpticalDepth, GrayLongwaveRadiation,
+    SimplePhysics, DryConvectiveAdjustment, SlabSurface,
+    get_default_state)
+import climt
+import datetime
+import numpy as np
+import sympl
+from datetime import timedelta
+import matplotlib.pyplot as plt
+import metpy.calc as calc
+import os
+from metpy.units import units
+
+from stoppingCriteria_fn import *
+from analyticFunctions import *
+from fluxDivergence_fns import *
+
+def runningModel(maxTau,albedo):
   # Initialize components
   diagnostic = Frierson06LongwaveOpticalDepth(linear_optical_depth_parameter=.1, longwave_optical_depth_at_equator=maxTau)
   radiation = GrayLongwaveRadiation(tendencies_in_diagnostics=True)
@@ -51,4 +68,4 @@ def runningModel():
   lwFluxNet, lwFluxUp, lwFluxDown = netFlux(state)
   heatRate = heatingRate(state)
   airTemperatureProf = (np.array(state['air_temperature'])).flatten()
-  return float(timeTaken.days), olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf
+  return state, float(timeTaken.days), olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf
