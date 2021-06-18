@@ -17,6 +17,8 @@ This project aims to explore methods of modelling large-scale Earth systems and 
     * Stopping criteria via the minimization of a net energy level in the atmospheric column.
     * The effect of changing aggregate atmospheric thickness on the timespan required for the system to reach equilibrium. 
 
+4. *RCE Model under development;*
+
 ## Modules Used ##
 This section lists the Python3 libraries used directly for the development of the models in this repository- not the dependencies of the libraries themselves. 
 * **CLiMT 0.16.23**: Provides components to set up a model state and create output tendencies and diagnostics.
