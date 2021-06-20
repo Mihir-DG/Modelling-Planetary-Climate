@@ -1,4 +1,4 @@
-## Modelling-Planetary-Climate
+# Modelling-Planetary-Climate
 This project aims to explore methods of modelling large-scale Earth systems and interpreting the results through the lens of spectroscopy, radiative transfer and thermodynamics. It evaluates key planetary climate variables (eg. OLR, radiative surface temperatures, optical depth profiles) using a series of 1d and 0d modelling techniques.  A PDF report entitled, "Modelling__Planetary_Climate_FINAL.pdf", documenting and explaining our results can be found in the root directory of the repository. All problems in this repository have been completed under the guidance of [Ass. Prof. Joy Merwin Monteiro](https://joymonteiro.github.io) (IISER-Pune). None of the graphs referenced in this README have been stored on the repository, but will be part of the final report mentioned earlier. All programs have been written in Python 3.6.8, using the libraries listed under the Modules section.
 
 ## Directory structure
@@ -17,7 +17,19 @@ This project aims to explore methods of modelling large-scale Earth systems and 
     * Stopping criteria via the minimization of a net energy level in the atmospheric column.
     * The effect of changing aggregate atmospheric thickness on the timespan required for the system to reach equilibrium. 
 
-4. *RCE Model under development;*
+4. **./RCEModel/**: Similarly to (3), this is a dynamic model, but it utilizes both radiative and convective processes to bring the system to equilibrium (hence, a radiative-convective equilibrium model). Similar profiles as in (3) are generated to highlight the effect convection has on the radiative equilibrium system. The time increments are much shorter (1-hour) to account for the rapid variation in key variables post initialization as a result of convection resolving radiative instabilities. We generally see more accurate results (with regard to the Earth system) with the addition of the convective component. The model specifically considers:
+   * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence.
+   *  Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary.
+   *  Stopping criteria via the minimization of a net energy level in the atmospheric column.
+   *  Potential temperature vertical profiles to identify regions of convective activity
+   *  Tropopause height (identified through upwelling longwave radiation and potential temperature vertical profiles).
+
+### Generating Your Own Profiles! ###
+  * **0d Model**: Run *0dModel.py*. The other program in the directory (*snowball_ice-free_0dmodelling.py*) can be used to generate albedo latitudinal profiles through the snowball/ice-free modelling technique.
+  * **Radiative Transfer Model**: Each program uses *setup.py* to run the model, but create different profiles using the model state as input. The current profiles that can be generated are air temperature, heating rate, and flux divergence (stratified + isothermal) profiles. We also have modalities that account for variations in optical depth with optical thickness the vertical distribution of the absorptivity coefficient, and variations of OLR with an exponentially-increasing optical thickness.
+  * **Radiative Equilibrium Model**: Given that the model is dynamic, the execution process is more streamlined than the radiative transfer model. Execute *runModel.py* to update the CSV files (in *output_runModel/*) used as input to dedicated graphing programs. *equilibriumProfs.py* and *weeklyProfs.py* generate stable and historical profiles, respectively. Run these after the CSV update to obtain your results.
+  * **Radiative-Convective Equilibrium Model**: Running this model will yield results not mentioned in the PDF outline, since they weren't distinct enough from their radiative equilibrium counterparts to provide new and relevant insights. Since the computation load increases here, running the model was compiled into a single main file, *runMain.py* to keep the process simple. Executing this program will fill *./RCEModel/graphs/* with any and all relevant profiles.
+
 
 ## Modules Used ##
 This section lists the Python3 libraries used directly for the development of the models in this repository- not the dependencies of the libraries themselves. 
