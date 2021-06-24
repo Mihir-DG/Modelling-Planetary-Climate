@@ -19,3 +19,8 @@ def net_energy_level_in_column(state,diff_acceptable):
 	fluxesOut = [lw_up_ntat_OUT,lw_down_surf_OUT,sw_up_ntat_OUT,sw_down_surf_OUT]
 	netEn = sum(fluxesIn) - sum(fluxesOut)
 	return netEn,fluxesIn,fluxesOut
+
+
+# Reflected value not taken into account given that the albedo coefficient is 
+# considered when initializing the insolation component --> only transmitted radiation
+# included in state['downwelling_shortwave_flux_in_'air'][radHt]
