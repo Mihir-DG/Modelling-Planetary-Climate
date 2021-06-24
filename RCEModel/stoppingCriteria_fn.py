@@ -21,6 +21,6 @@ def net_energy_level_in_column(state,diff_acceptable):
 	return netEn,fluxesIn,fluxesOut
 
 
-# Reflected value not taken into account given that the albedo coefficient is 
-# considered when initializing the insolation component --> only transmitted radiation
-# included in state['downwelling_shortwave_flux_in_'air'][radHt]
+#sw_up_surf_reflected_IN removed b/c gray shortwave not considered
+# i.e. any reflected shortwave (upwelling) leaves the atmosphere,
+# hence, net zero impact.
