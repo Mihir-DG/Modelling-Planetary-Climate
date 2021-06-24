@@ -22,5 +22,6 @@ def net_energy_level_in_column(state,diff_acceptable):
 
 
 #sw_up_surf_reflected_IN removed b/c gray shortwave not considered
-# i.e. any reflected shortwave (upwelling) leaves the atmosphere,
-# hence, net zero impact.
+# i.e. any reflected shortwave (upwelling) leaves the atmosphere, hence, net zero impact.
+
+# Will require consideration if gray shortwave component introduced and added to model setup
