@@ -11,7 +11,7 @@ This project aims to explore methods of modelling large-scale Earth systems and 
     * The effect of doubling aggregate atmospheric thickness on the system's outgoing longwave radiation. 
 
 
-3. **./radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
+3. **./radiative_equilibriumModel/**: This is a dynamic model that attempts to bring the 1d system to equilibrium before evaluating the variables explored in the radiative tranfer model. It uses 4-hour increments to step the model forward through time. The choice between presenting variables as equilibrium profiles or historical profiles depended primarily upon its dimensional constraints- all results are presented as 1d line graphs for simplicity. The model specifically considers:
     * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence. 
     * Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary. 
     * Stopping criteria via the minimization of a net energy level in the atmospheric column.
@@ -21,7 +21,7 @@ This project aims to explore methods of modelling large-scale Earth systems and 
    * Equilibrium profiles of optical depth, heating rate, air temperature and flux divergence.
    *  Weekly changes in outgoing longwave radiative flux, surface temperature, net energy levels in the atmosphere, and the temperature gradient across the atmosphere-surface boundary.
    *  Stopping criteria via the minimization of a net energy level in the atmospheric column.
-   *  Potential temperature vertical profiles to identify regions of convective activity
+   *  Potential temperature vertical profiles to identify regions of radiative instability, and thus, convective activity.
    *  Tropopause height (identified through upwelling longwave radiation and potential temperature vertical profiles).
 
 ### Making Your Own Profiles! ###
