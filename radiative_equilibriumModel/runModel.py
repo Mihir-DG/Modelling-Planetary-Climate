@@ -23,6 +23,7 @@ def runningModel(maxTau):
 	time_stepper = AdamsBashforth([radiation,surface])
 	timestep = datetime.timedelta(hours = 4)
 	state = climt.get_default_state([radiation, diagnostic, surface])
+	airPressure_vertCoord = np.array(state['air_pressure_on_interface_levels']).flatten()
 	sw_flux = 200
 	state.update(diagnostic(state))
 	state['downwelling_shortwave_flux_in_air'][:] = sw_flux
@@ -62,15 +63,17 @@ def runningModel(maxTau):
 	lwFluxNet, lwFluxUp, lwFluxDown = netFlux(state)
 	heatRate = heatingRate(state)
 	airTemperatureProf = (np.array(state['air_temperature'])).flatten()
-	return timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf
+	return state, timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf, airPressure_vertCoord
 
-def output_to_csv(timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf):
+def output_to_csv(timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf,airPressure_vertCoord):
+	print(airPressure_vertCoord)
 	with open('output_runModel/weekly_results.csv', mode='w') as weeklyCSV:
 		weeklyWriter = csv.writer(weeklyCSV)
 		weeklyWriter.writerow(olrs)
 		weeklyWriter.writerow((np.array(bdry_tempDiff)).flatten())
 		weeklyWriter.writerow(surfT)
 		weeklyWriter.writerow(netEn)
+		weeklyWriter.writerow(airPressure_vertCoord)
 	with open('output_runModel/equilibrium.csv', mode='w') as equilibriumCSV:
 		equilibriumWriter = csv.writer(equilibriumCSV)
 		equilibriumWriter.writerow(lwFluxNet)
@@ -79,6 +82,7 @@ def output_to_csv(timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFlu
 		equilibriumWriter.writerow(heatRate)
 		equilibriumWriter.writerow(airTemperatureProf)
 		equilibriumWriter.writerow(str(timeTaken))
+		equilibriumWriter.writerow(airPressure_vertCoord)
 	return 0.
 
 def maxTau_eqTime():
@@ -92,16 +96,37 @@ def maxTau_eqTime():
 
 # runningModel() calls first 3 fns; does not need to be called in main() for runningModel()	
 def main():
-	maxTau = 6
-	timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf = runningModel(maxTau)
-	output_to_csv(timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf)
-	outTimes, maxTaus = maxTau_eqTime()
-	plt.xlabel("Aggregate Atmospheric Optimal Thickness")
+	maxTau = 0.94
+	state, timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf, airPressure_vertCoord = runningModel(maxTau)
+	output_to_csv(timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf, airPressure_vertCoord)
+	print(state['upwelling_longwave_flux_in_air'][-1])
+	print(state['surface_temperature'])
+	#outTimes, maxTaus = maxTau_eqTime()
+	"""plt.xlabel("Aggregate Atmospheric Optimal Thickness")
 	plt.ylabel("Equilibrium Duration (Days)")
-	plt.scatter(maxTaus,outTimes)
+	#plt.scatter(maxTaus,outTimes)
 	plt.plot(maxTaus,outTimes,color='black')
 	plt.savefig("../../../graphs_modelling/1dradiative-eq/maxTau_eqTime.png")
 	#plt.scatter()
+	
+	idealizedSurfT = 288.2
+	idealizedOLR = 231.76
+	RMS = []
+	maxTau_ranges = np.linspace(0,6,20)
+	for maxTau in maxTau_ranges:
+		planetary_albedo = 0.29
+		#cleaningUp()
+		state, timeTaken, olrs, bdry_tempDiff, netEn, surfT, lwFluxNet, lwFluxUp, lwFluxDown, heatRate, airTemperatureProf = runningModel(maxTau)
+		olr = np.array(state['upwelling_longwave_flux_in_air'][-1]).flatten()[0]
+		surfT = np.array(state['surface_temperature']).flatten()[0]
+		errorFunc = math.sqrt((idealizedOLR-olr)**2 + (idealizedSurfT-surfT)**2)
+		print(errorFunc,maxTau)
+		RMS.append(errorFunc)
+	plt.plot(RMS)
+	plt.savefig("RMSE_RadEq.png")
+	plt.show()
+	print(np.amin(RMS))"""
+
 if __name__ == '__main__':
 	main()
 
