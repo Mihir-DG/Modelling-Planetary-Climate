@@ -15,6 +15,7 @@ def eqProfs(state):
 	timeTaken = ''.join(dataArr[5])
 
 	airPressure_vCoord = np.array(state['air_pressure_on_interface_levels']).flatten()
+	airPressure_vCoord = [round((float(ele)/1000),0) for ele in airPressure_vCoord]
 	
 	# Plotting Schwarzchild deltas.
 	fig = plt.figure()
@@ -22,7 +23,7 @@ def eqProfs(state):
 	plt.plot(lwFluxNet,airPressure_vCoord)
 	plt.gca().invert_yaxis()
 	plt.xlabel("Net longwave radiative flux (Wm^-2)")
-	plt.ylabel("Pressure (Pa)")
+	plt.ylabel("Pressure (kPa)")
 	plt.savefig("graphs/equilibrium_netFlux_vertical.png")
 	
 	# Plotting upwelling longwave flux (p)
@@ -31,14 +32,14 @@ def eqProfs(state):
 	plt.gca().invert_yaxis()
 	plt.plot(lwFluxUp, airPressure_vCoord)
 	plt.xlabel("Upwelling longwave radiative flux (Wm^-2)")
-	plt.ylabel("Pressure (Pa)")
+	plt.ylabel("Pressure (kPa)")
 	plt.savefig("graphs/equilibrium_upFlux_vertical.png")
 
 	# Plotting downwelling longwave flux (p)
 	fig = plt.figure()
 	lwFluxDown = [float(i) for i in lwFluxDown]
 	plt.xlabel("Downwelling longwave radiative flux (Wm^-2)")
-	plt.ylabel("Pressure (Pa)")
+	plt.ylabel("Pressure (kPa)")
 	plt.gca().invert_yaxis()
 	plt.plot(lwFluxDown,airPressure_vCoord)
 	plt.savefig("graphs/equilibrium_downFlux_vertical.png")
@@ -47,7 +48,7 @@ def eqProfs(state):
 	fig = plt.figure()
 	heatRate = [float(i) for i in heatRate]
 	plt.xlabel("Longwave Heating Rate")
-	plt.ylabel("Pressure (Pa)")
+	plt.ylabel("Pressure (kPa)")
 	plt.gca().invert_yaxis()
 	plt.plot(heatRate,airPressure_vCoord)
 	plt.savefig("graphs/equilibrium_heatRate_vertical.png")
@@ -55,7 +56,7 @@ def eqProfs(state):
 	fig = plt.figure()
 	airTemperatureProf = [float(i) for i in airTemperatureProf]
 	plt.xlabel("Air Temperature (K)")
-	plt.ylabel("Pressure (Pa)")
+	plt.ylabel("Pressure (kPa)")
 	plt.gca().invert_yaxis()
 	plt.plot(airTemperatureProf,airPressure_vCoord[:28])
 	plt.savefig("graphs//equilibrium_airT_vertical.png")

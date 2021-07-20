@@ -15,6 +15,7 @@ def potentialTemperature_verticalProfile(state):
   potentialTemperatures = [i.magnitude for i in potentialTemperatures]
   
   # Graphing Theta.
+  fig = plt.figure()
   plt.plot(np.array(state['air_pressure_on_interface_levels']).flatten()[:28],potentialTemperatures)
   plt.xlabel("Pressure (Pa)")
   plt.ylabel("Potential Temperature (K)")
