@@ -1,6 +1,8 @@
 # Modelling-Planetary-Climate
 This project aims to explore methods of modelling large-scale Earth systems and interpreting the results through the lens of spectroscopy, radiative transfer and thermodynamics. It evaluates key planetary climate variables (eg. OLR, radiative surface temperatures, optical depth profiles) using a series of 1d and 0d modelling techniques.  A PDF report entitled, "Modelling__Planetary_Climate_FINAL.pdf", documenting and explaining our results can be found in the root directory of the repository. All problems in this repository have been completed under the guidance of [Prof. Joy Merwin Monteiro](https://joymonteiro.github.io) (IISER-Pune). Most of the graphs referenced in this README have not been stored on the repository, but can be found in the report mentioned earlier. All programs have been written in Python 3.7.2, using the libraries listed under the Modules section.
 
+For the sake of scientific accuracy, some models, especially the equilibrium models, have been written using the RRTM-G (Rapid Radiative Transfer Model for GCMs) setup. This preserves the same physical principles, but uses spectroscopic data of atmospheric constituents to develop an aggregate optical depth profile. The initial setup, the gray model, inputs parameters to estimate an optical depth profile, sidestepping the requirement for individual constituent data.
+
 ## Directory structure
 1. **./zeroDims/**: Contains the code required to run a simple zero-dimensional model, primarily seeking to identify the surface's equilibrium radiating temperature for a given albedo level.
 
